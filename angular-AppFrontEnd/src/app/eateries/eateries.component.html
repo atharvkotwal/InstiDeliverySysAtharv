@@ -1,0 +1,9 @@
+<h3>Eateries Available</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let eatery of eateries" class="col-1-4"
+  		routerLink="/detail/{{eatery.Eid}}">
+    <div class="module">
+      <h4>{{eatery.name}}</h4>
+    </div>
+  </a>
+</div>

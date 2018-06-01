@@ -1,0 +1,12 @@
+<div *ngIf="eatery">
+  <table>
+    <caption><h2>{{ eatery.name | uppercase }} 's Menu </h2></caption>
+      <tr><th> Fid </th><th> Food Name </th><th> Price (Rs)</th><th> Quantity </th> </tr>
+      <tr *ngFor="let fd of fdetails">
+          <th> {{fd.Fid}} </th><th> {{fd.foodname}} </th><th> {{fd.price}}</th>
+          <th > <input type="number" [(ngModel)]="fd.qty" placeholder="qty" /> </th>
+      </tr>
+  </table>
+  <button (click)="placeorder()" routerLink= "/yourorder" >Place Order</button>
+  <button (click)="goBack()">go back</button>
+</div>
