@@ -7,6 +7,8 @@ import { AppRoutingModule } from './/app-routing.module';
 import { EaterydetailsComponent } from './eaterydetails/eaterydetails.component';
 import { OrdersComponent } from './orders/orders.component';
 import { LoginComponent } from './login/login.component';
+import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule }    from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,12 +16,14 @@ import { LoginComponent } from './login/login.component';
     EateriesComponent,
     EaterydetailsComponent,
     OrdersComponent,
-    LoginComponent
+    LoginComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

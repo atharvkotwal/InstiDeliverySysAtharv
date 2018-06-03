@@ -1,0 +1,7 @@
+client id - Dgz5dN2UNvrWeXzsgWj0H96viAznSA9akUcrFWFO
+client secret - Dgz5dN2UNvrWeXzsgWj0H96viAznSA9akUcrFWFO:J4d3mGVzd3SUDA5oeOPQ0tmdCPkCEqLiroFeZC4UYzmfbd6JAyfut7lyE1ghWiexVaeCkW8NSALlK2KoRO4UgfDGBsrIlXJMqytDJXoasbT6nFD8AgWFPdbtM2S6aBmm
+client type - confidential
+Authorization Grant Type - authorization-code
+Redirect URI - http://localhost:8000/api/login
+
+code=AUTHORIZATION_CODE&redirect_uri=http://localhost:8000/api/login&grant_type=authorization_code

@@ -5,6 +5,7 @@ import { Eatery } from '../eatery';
 import { FoodDetails } from '../fooddetails';
 import { EaterydetService } from '../eaterydet.service';
 import { OrderService } from '../order.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-eaterydetails',
@@ -19,7 +20,8 @@ export class EaterydetailsComponent implements OnInit {
   		private route: ActivatedRoute,
       private location: Location,
       private eaterydetservice:EaterydetService,
-      private orderservice:OrderService
+      private orderservice:OrderService,
+      private router:Router
   ) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class EaterydetailsComponent implements OnInit {
   }
   placeorder():void{
     this.orderservice.order(this.eatery);
+    this.router.navigate(['/yourorder']);
   }
   goBack(): void {
     this.location.back();
