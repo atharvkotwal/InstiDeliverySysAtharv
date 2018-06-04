@@ -1,0 +1,17 @@
+{
+    "session_id": "d96mranf58a799hwl9oog8f67qr2ygw6",
+    "username": "SHUBHAM BABASAHEB",
+    "profile_id": "9614",
+    "profile": {
+        "id": 9614,
+        "first_name": "SHUBHAM BABASAHEB",
+        "last_name": "BIRANGE",
+        "roll_no": "160070014",
+        "ldap_id": "160070014",
+        "profile_pic": "https://gymkhana.iitb.ac.in/sso/media/profile_picture/a53a1cc0b3b74c32b75acc715e497eba.jpg",
+        "contact_no": "9930630605",
+        "email": "160070014@iitb.ac.in",
+        "hostel": "8",
+        "room": "C-153"
+    }
+}

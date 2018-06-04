@@ -4,7 +4,7 @@
       <tr><th> Fid </th><th> Food Name </th><th> Price (Rs)</th><th> Quantity </th> </tr>
       <tr *ngFor="let fd of fdetails">
           <th> {{fd.Fid}} </th><th> {{fd.foodname}} </th><th> {{fd.price}}</th>
-          <th > <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />{{fd.qty}} </th>
+          <th > <input type="number" [(ngModel)]="fd.qty" placeholder="qty" /></th>
       </tr>
   </table>
   <button (click)="placeorder()"  >Place Order</button>
