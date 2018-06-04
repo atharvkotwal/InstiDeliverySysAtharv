@@ -16,7 +16,7 @@ export class UserdetService {
     private router:Router
   ) { }
   getuserdet(authcode:string){
-    var myurl= "http://localhost:8000/api/login/get_user?state=some_state&code="+authcode;
+    var myurl= "http://localhost:8000/api/login?state=some_state&code="+authcode;
     return this.http.get(myurl);
                 // .pipe(
                 //       tap(data=>this.router.navigate(['/eateries'])),

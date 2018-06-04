@@ -35,7 +35,7 @@ export class AuthComponent implements OnInit {
   getauthcode(){
     const str = this.route.snapshot.queryParamMap.get('code');
     this.authcode= str;
-    this.url = "http://localhost:8000/api/login/get_user?state=some_state&code="+this.authcode;
+    this.url = "http://localhost:8000/api/login?state=some_state&code="+this.authcode;
   //   this.tokenservice.gettoken(this.authcode).subscribe((data:any)=>{
   //     this.acctoken= data.access_token;
   //     this.worked= true;
