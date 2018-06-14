@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Eatery } from '../eatery';
 import { EaterydetService } from '../eaterydet.service';
+import { UserdetService } from '../userdet.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { MydetailsComponent } from '../mydetails/mydetails.component';
 
 @Component({
   selector: 'app-eateries',
@@ -10,7 +14,11 @@ import { EaterydetService } from '../eaterydet.service';
 export class EateriesComponent implements OnInit {
   eateries : Eatery[];
 
-  constructor(private eaterydetservice : EaterydetService) { }
+  constructor(private eaterydetservice : EaterydetService,
+              private route:ActivatedRoute,
+              private router:Router,
+              private userdetservice:UserdetService,
+  ) { }
 
   ngOnInit() {
     this.getetrys();
@@ -20,5 +28,10 @@ export class EateriesComponent implements OnInit {
     this.eaterydetservice.geteateries()
         .subscribe(etrys => this.eateries = etrys );
   }
-
+  logout(){
+    this.userdetservice.logout();
+  }
+  mydetails(){
+    this.router.navigate(['mydetails']);
+  }
 } 

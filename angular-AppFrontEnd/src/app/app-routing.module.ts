@@ -5,16 +5,16 @@ import { EaterydetailsComponent } from './eaterydetails/eaterydetails.component'
 import { OrdersComponent } from './orders/orders.component';
 import { LoginComponent } from './login/login.component';
 import { AuthComponent } from './auth/auth.component';
+import { MydetailsComponent } from './mydetails/mydetails.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  //{ path: 'api/:str', redirectTo: '/auth', pathMatch: "full" },
-  { path: 'api/:str', component: AuthComponent },
   { path: 'auth' , component: AuthComponent},
   { path: 'login', component:LoginComponent},
   { path: 'eateries', component: EateriesComponent },
   { path: 'detail/:Eid', component: EaterydetailsComponent },
-  { path: 'yourorder', component: OrdersComponent }
+  { path: 'yourorder', component: OrdersComponent },
+  { path: 'mydetails', component: MydetailsComponent }
 ];
 
 @NgModule({

@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apibaseURL: "https://gymkhana.iitb.ac.in/api"
 };

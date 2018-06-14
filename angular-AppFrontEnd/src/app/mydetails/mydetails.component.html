@@ -1,0 +1,13 @@
+<div>
+  <span style="float:right"> <button (click)="refreshtoken()">RefreshToken</button> </span>
+  <pre>
+    <h2>{{wait}}</h2>
+    Profile ID: {{mydetails['profile']['id']}}
+    Name: {{mydetails['profile']['first_name']}} {{mydetails['profile']['last_name']}}
+    Roll No.: {{mydetails['profile']['roll_no']}}
+    Hostel: {{mydetails['profile']['hostel']}}
+    Profile Picture:
+    <img src="{{mydetails['profile']['profile_pic']}}" alt="{{mydetails['profile']['profile_pic']}}">
+    Token:{{token}}
+  </pre>
+</div>
