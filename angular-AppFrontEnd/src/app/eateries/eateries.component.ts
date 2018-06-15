@@ -28,10 +28,4 @@ export class EateriesComponent implements OnInit {
     this.eaterydetservice.geteateries()
         .subscribe(etrys => this.eateries = etrys );
   }
-  logout(){
-    this.userdetservice.logout();
-  }
-  mydetails(){
-    this.router.navigate(['mydetails']);
-  }
 } 

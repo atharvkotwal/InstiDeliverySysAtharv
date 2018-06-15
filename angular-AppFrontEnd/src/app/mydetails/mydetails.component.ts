@@ -25,11 +25,5 @@ export class MydetailsComponent implements OnInit {
        this.wait = "Your Details are";
      })
    }
-   refreshtoken(){
-     this.userdetservice.refreshtoken().subscribe(data=>{
-       localStorage.setItem('token',data['token']);
-       this.token = localStorage.getItem('token');
-     })
-   }
 
 }

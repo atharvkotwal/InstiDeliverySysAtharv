@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserdetService } from '../userdet.service';
 import { Router } from '@angular/router';
+//import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
   msg:string; 
   constructor(
     public userdetservice:UserdetService,
-    private router:Router
+    private router:Router,
+    //public appcomp:AppComponent
   ) { }
 
   ngOnInit() {
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
   checkifloggedin(){
     if(localStorage.length != 0){
       this.userdetservice.mydetail().subscribe(data=>{
-        this.router.navigate(['eateries'])
+        this.router.navigate(['eateries']);
       })
       return
     }
