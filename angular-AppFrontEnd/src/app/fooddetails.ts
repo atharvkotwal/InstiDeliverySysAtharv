@@ -4,3 +4,9 @@ export class FoodDetails{
 	price:number;
 	qty?:number;
 }
+
+export class FoodType{
+	Ftypeid?:number;
+	Ftype: string;
+	Ftypedet: FoodDetails[];	
+}

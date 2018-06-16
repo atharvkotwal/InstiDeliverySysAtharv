@@ -10,6 +10,4 @@ export const EATERIES: Eatery[] = [
   { Eid: 12, name: 'B&B', details: MenuBB },
   { Eid: 13, name: 'Campus Hub', details: MenuCampusHub },
   { Eid: 14, name: 'Gulmohar', details: MenuGullu }
-  
-
 ];

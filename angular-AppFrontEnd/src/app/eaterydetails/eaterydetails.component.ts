@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Eatery } from '../eatery';
-import { FoodDetails } from '../fooddetails';
+import { FoodDetails,FoodType } from '../fooddetails';
 import { EaterydetService } from '../eaterydet.service';
 import { OrderService } from '../order.service';
 import { Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class EaterydetailsComponent implements OnInit {
   @Input() eatery:Eatery;
-  fdetails:FoodDetails[];
+  fdetails:FoodType[][];
 
   constructor(
   		private route: ActivatedRoute,
@@ -40,5 +40,4 @@ export class EaterydetailsComponent implements OnInit {
   goBack(): void {
     this.location.back();
   }
-
 }

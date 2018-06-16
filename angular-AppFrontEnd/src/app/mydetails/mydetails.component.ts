@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserdetService  } from '../userdet.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-mydetails',
@@ -11,7 +12,8 @@ export class MydetailsComponent implements OnInit {
   token : string;
   wait:string;
   constructor(
-    public userdetservice: UserdetService
+    public userdetservice: UserdetService,
+    private location:Location
   ) { }
 
   ngOnInit() {
@@ -25,5 +27,7 @@ export class MydetailsComponent implements OnInit {
        this.wait = "Your Details are";
      })
    }
-
+   goBack(){
+     this.location.back();
+   }
 }

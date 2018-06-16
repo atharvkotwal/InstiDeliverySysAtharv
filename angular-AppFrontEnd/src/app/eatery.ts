@@ -1,7 +1,7 @@
-import { FoodDetails } from './fooddetails';
+import { FoodType } from './fooddetails';
 
 export class Eatery{
 	Eid:number;
 	name:string;
-	details: FoodDetails[];
+	details: FoodType[][];
 }

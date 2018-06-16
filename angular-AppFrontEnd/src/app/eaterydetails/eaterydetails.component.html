@@ -1,12 +1,44 @@
 <div *ngIf="eatery">
-  <table>
-    <caption><h2>{{ eatery.name | uppercase }} 's Menu </h2></caption>
-      <tr><th> Fid </th><th> Food Name </th><th> Price (Rs)</th><th> Quantity </th> </tr>
-      <tr *ngFor="let fd of fdetails">
-          <th> {{fd.Fid}} </th><th> {{fd.foodname}} </th><th> {{fd.price}}</th>
-          <th > <input type="number" [(ngModel)]="fd.qty" placeholder="qty" /></th>
-      </tr>
-  </table>
-  <button (click)="placeorder()"  >Place Order</button>
-  <button (click)="goBack()">go back</button>
+    <h1>{{eatery.name}}'s Menu</h1>
+<ngb-tabset [justify]="fill">
+  <ngb-tab title="VEG">
+    <ng-template ngbTabContent>
+        <ngb-tabset [justify]="justified">
+          <ngb-tab *ngFor="let ft of fdetails[0] ">
+              <ng-template ngbTabTitle>{{ft.Ftype}}</ng-template>
+              <ng-template ngbTabContent>
+                  <table>
+                      <tr><th> Fid </th><th> Food Name </th><th> Price (Rs)</th><th> Quantity </th> </tr>
+                      <tr *ngFor="let fd of ft.Ftypedet">
+                          <th> {{fd.Fid}} </th><th> {{fd.foodname}} </th><th> {{fd.price}}</th>
+                          <th > <input type="number" [(ngModel)]="fd.qty" placeholder="qty" /></th>
+                      </tr>
+                  </table>                
+              </ng-template>              
+          </ngb-tab>
+        </ngb-tabset>            
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle>NON-VEG</ng-template>
+    <ng-template ngbTabContent>
+        <ngb-tabset [justify]="justified">
+            <ngb-tab *ngFor="let ft of fdetails[1] ">
+                <ng-template ngbTabTitle>{{ft.Ftype}}</ng-template>
+                <ng-template ngbTabContent>
+                    <table>
+                        <tr><th> Fid </th><th> Food Name </th><th> Price (Rs)</th><th> Quantity </th> </tr>
+                        <tr *ngFor="let fd of ft.Ftypedet">
+                            <th> {{fd.Fid}} </th><th> {{fd.foodname}} </th><th> {{fd.price}}</th>
+                            <th > <input type="number" [(ngModel)]="fd.qty" placeholder="qty" /></th>
+                        </tr>
+                    </table>                
+                </ng-template>                
+            </ngb-tab>
+          </ngb-tabset>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+<button (click)="placeorder()"  >Place Order</button>
+<button (click)="goBack()">go back</button>
 </div>
