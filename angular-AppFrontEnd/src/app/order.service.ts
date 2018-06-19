@@ -12,11 +12,10 @@ export class OrderService {
   constructor() { }
 
   order(etry:Eatery):void{
-      var fdetails:FoodType[][] = etry.details;
-      for(var k=0;k<fdetails.length;k++){
-        for(var l=0; l<fdetails[k].length;l++){
-          for(var i=0;i<fdetails[k][l].Ftypedet.length ;i++){
-            var food= fdetails[k][l].Ftypedet[i];
+      var fdetails:FoodType[] = etry.details;
+        for(var l=0; l<fdetails.length;l++){
+          for(var i=0;i<fdetails[l].Ftypedet.length ;i++){
+            var food= fdetails[l].Ftypedet[i];
             if(food.qty>0){
               var order:Orderlist = {Eid:etry.Eid, 
                                   name:etry.name, 
@@ -29,8 +28,7 @@ export class OrderService {
               this.orders.push(order);
             }
           }
-        }        
-      }
+        }
       this.refine(this.orders);
   }
   refine(list:Orderlist[]):void{

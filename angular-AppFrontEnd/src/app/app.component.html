@@ -1,9 +1,12 @@
+<!-- <p>{{title}} {{this.userdetservice.logmsg}}</p> -->
 <h1>{{title}}</h1>
+
 <nav>
     <button style="float: right" (click)="logout()">Logout</button>
     <button style="float: right" (click)="mydetails()">User Details</button>
+    <!-- <button style="float: right" (click)="refmsg()">Refresh Msg</button> -->
+
 </nav>
 <!-- <div *ngIf="showLoadingIndicator" class="spinner"></div> -->
 
 <router-outlet></router-outlet>
-

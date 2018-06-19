@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserdetService } from '../userdet.service';
+import { UserdetService} from '../userdet.service';
 import { Router } from '@angular/router';
 //import { AppComponent } from '../app.component';
 
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  msg:string; 
+  msg:string;
   constructor(
     public userdetservice:UserdetService,
     private router:Router,
@@ -17,16 +17,19 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.msg = this.userdetservice.logoutmsg;
+    this.msg = this.userdetservice.logmsg;
+    // localStorage.setItem('msg','Checking Login Status');
     this.checkifloggedin();
   }
   checkifloggedin(){
-    if(localStorage.length != 0){
+    if(localStorage.getItem('token')){
+      // this.userdetservice.logmsg += " has token state o.5 ";
       this.userdetservice.mydetail().subscribe(data=>{
         this.router.navigate(['eateries']);
       })
       return
     }
+    // this.userdetservice.logmsg += " state o ";
     return
   }
 

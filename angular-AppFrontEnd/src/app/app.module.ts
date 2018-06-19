@@ -11,6 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule }    from '@angular/common/http';
 import { MydetailsComponent } from './mydetails/mydetails.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

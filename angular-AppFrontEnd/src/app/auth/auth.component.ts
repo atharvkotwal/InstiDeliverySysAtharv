@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserdetService } from '../userdet.service';
 
@@ -15,7 +14,7 @@ export class AuthComponent implements OnInit {
   constructor(
     private route:ActivatedRoute,
     private router:Router,
-    private userdetservice:UserdetService
+    public userdetservice:UserdetService
   ) { }
 
   ngOnInit() {
@@ -30,6 +29,7 @@ export class AuthComponent implements OnInit {
     this.authcode = this.route.snapshot.queryParamMap.get('code');
     this.userdetservice.loginuser(this.authcode).subscribe(data=> {
       localStorage.setItem('token', data['token']);
+      // this.userdetservice.logmsg += " state I fresh token ";
       this.router.navigate(['eateries']);
     });
   }

@@ -6,6 +6,7 @@ import { FoodDetails,FoodType } from '../fooddetails';
 import { EaterydetService } from '../eaterydet.service';
 import { OrderService } from '../order.service';
 import { Router } from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-eaterydetails',
@@ -14,14 +15,17 @@ import { Router } from '@angular/router';
 })
 export class EaterydetailsComponent implements OnInit {
   @Input() eatery:Eatery;
-  fdetails:FoodType[][];
+  fdetails:FoodType[];
+  description:string;
+  image:string;
 
   constructor(
   		private route: ActivatedRoute,
       private location: Location,
       private eaterydetservice:EaterydetService,
       private orderservice:OrderService,
-      private router:Router
+      private router:Router,
+      private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -33,6 +37,15 @@ export class EaterydetailsComponent implements OnInit {
         .subscribe(etry => this.eatery = etry);
     this.fdetails= this.eatery.details;
   }
+  openWindowCustomClass(content,desc:string,img:string) {
+    this.description = desc;
+    this.image = img;
+    this.modalService.open(content, { windowClass: 'dark-modal', centered:true });
+  }
+  // showdesc(desc:string){
+  //   this.description=desc;
+  //   // this.image = img;
+  // }
   placeorder():void{
     this.orderservice.order(this.eatery);
     this.router.navigate(['/yourorder']);

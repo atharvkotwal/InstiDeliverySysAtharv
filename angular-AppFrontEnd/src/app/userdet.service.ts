@@ -1,17 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { RequestOptions, Headers } from '@angular/http';
-import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { Router } from '@angular/router';
-import { catchError, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserdetService {
-  logoutmsg: any;
+  logmsg: any;
   apibaseURL = environment.apibaseURL;
   constructor(
     private http: HttpClient,
@@ -36,20 +34,22 @@ export class UserdetService {
     };
     var myurl = this.apibaseURL + "logout/";
     this.http.get(myurl, httpOptions).subscribe(data => {
-      this.logoutmsg = data['message'];
+      this.logmsg = data['message'];
       localStorage.clear();
       this.router.navigate(['login']);
     });
   }
   refreshtoken() {
-    if (localStorage.length == 0) { return };
+    if (!localStorage.getItem('token')){ console.log(localStorage.length);return; };
     const tokn = localStorage.getItem('token');
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
     const body = { 'token': tokn };
     const myurl = this.apibaseURL + "auth/refresh_token";
+    console.log('Making refresh request');
+    //this.logmsg += " Refreshing token ";
     return this.http.post(myurl, body, httpOptions)
-      .pipe(tap(data => localStorage.setItem('token', data['token'])));
+      .pipe(tap(data => {localStorage.setItem('token', data['token']);console.log("Refreshed Token");}));
   }
 }
