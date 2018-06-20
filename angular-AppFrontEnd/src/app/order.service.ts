@@ -11,12 +11,12 @@ export class OrderService {
   test:number;
   constructor() { }
 
-  order(etry:Eatery):void{
+  order(etry:Eatery):any{
       var fdetails:FoodType[] = etry.details;
         for(var l=0; l<fdetails.length;l++){
           for(var i=0;i<fdetails[l].Ftypedet.length ;i++){
             var food= fdetails[l].Ftypedet[i];
-            if(food.qty>0){
+            if((food.qty>0) && (Number.isInteger(food.qty))){
               var order:Orderlist = {Eid:etry.Eid, 
                                   name:etry.name, 
                                   Fid:food.Fid, 

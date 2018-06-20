@@ -12,6 +12,7 @@ import { HttpClientModule }    from '@angular/common/http';
 import { MydetailsComponent } from './mydetails/mydetails.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './auth.guard';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AuthGuard } from './auth.guard';
     OrdersComponent,
     LoginComponent,
     AuthComponent,
-    MydetailsComponent
+    MydetailsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -64,7 +64,7 @@
 table, th, tr, td{
   border: 1px solid #cfd8dc93;
   border-collapse:collapse; 
-  padding: 10px;
+  
   text-align: center;
 }
 button {
