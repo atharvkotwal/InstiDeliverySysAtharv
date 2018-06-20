@@ -32,5 +32,4 @@ export class LoginComponent implements OnInit {
     // this.userdetservice.logmsg += " state o ";
     return
   }
-
 }
