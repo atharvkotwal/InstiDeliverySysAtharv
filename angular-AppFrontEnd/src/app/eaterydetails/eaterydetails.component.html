@@ -77,15 +77,15 @@
             <ng-template ngbTabContent>
                 <table style="width:100%; ">
                     <tr>
-                        <th> Fid </th>
+                        <th> id </th>
                         <th> Food Name </th>
                         <th> Price (Rs)</th>
                         <th> Quantity </th>
                     </tr>
                     <tr *ngFor="let fd of ft.Ftypedet" [ngSwitch]="fd.type">
-                        <td *ngSwitchCase="2" style="color: red"> {{fd.Fid}} </td>
-                        <td *ngSwitchCase="3" style="color:rgba(255, 255, 0, 0.836)"> {{fd.Fid}} </td>
-                        <td *ngSwitchDefault style="color: green"> {{fd.Fid}} </td>
+                        <td *ngSwitchCase="2" style="color: red"> {{fd.id}} </td>
+                        <td *ngSwitchCase="3" style="color:rgba(255, 255, 0, 0.836)"> {{fd.id}} </td>
+                        <td *ngSwitchDefault style="color: green"> {{fd.id}} </td>
                         <td *ngSwitchCase="2" style="color: red; cursor: pointer" (click)="openWindowCustomClass(content,fd.description,fd.img)">
                             <u> {{fd.foodname}}</u>
                         </td>

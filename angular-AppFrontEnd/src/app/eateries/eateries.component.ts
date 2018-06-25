@@ -26,6 +26,6 @@ export class EateriesComponent implements OnInit {
   
   getetrys():void{
     this.eaterydetservice.geteateries()
-        .subscribe(etrys => this.eateries = etrys );
+        .subscribe(etrys => {this.eateries = etrys.eateries;} );
   }
 } 

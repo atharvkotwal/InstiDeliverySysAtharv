@@ -1,13 +1,13 @@
 export class FoodDetails{
-	Fid:number;
+	id:number;
 	foodname:string;
 	price:number;
-	type?:number; //1-VEG(default) 2-NON_VEG 3-EGG
+	availability:boolean;
+	food_type?:string; //1-VEG(default) 2-NON_VEG 3-EGG
 	description?:string;
-	qty?:number;
 	img?:string;
+	qty?:number;
 }
-
 export class FoodType{
 	Ftypeid?:number;
 	Ftype: string;

@@ -33,9 +33,8 @@ export class EaterydetailsComponent implements OnInit {
   }
   getetrydet(): void {
     const id = +this.route.snapshot.paramMap.get('Eid');
-    this.eaterydetservice.geteaterydet(id)
-      .subscribe(etry => this.eatery = etry);
-    this.fdetails = this.eatery.details;
+    this.eaterydetservice.geteaterydet(id).subscribe(etry => this.eatery = etry);
+    this.fdetails = this.eatery.Menu;
   }
   openWindowCustomClass(content, desc: string, img: string) {
     this.description = desc;
