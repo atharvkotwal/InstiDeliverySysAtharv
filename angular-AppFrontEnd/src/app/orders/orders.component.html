@@ -9,7 +9,7 @@
             </tr>
             <tr> <th colspan="4"> Total Amount to Pay </th> <th> <strong>{{total}}</strong>  </th> </tr>
     </table>
-    <button >ORDER and PAY Rs {{total}}</button>
+    <button (click)="finalorder()" >ORDER and PAY Rs {{total}}</button>
 </div>
 
 <button (click)="goBack()">go back</button>

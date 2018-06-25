@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Eatery } from './eatery';
 import { FoodDetails,FoodType } from './fooddetails';
-import { Orderlist } from './orderlist';
+import { Orderlist,finalorder,finalorderlist } from './orderlist';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
   orders:Orderlist[]= [];
-  test:number;
   constructor() { }
 
   order(etry:Eatery):any{
@@ -44,5 +43,18 @@ export class OrderService {
   }
   clear():void{
     this.orders=[];
+  }
+  finalorder(){
+    var token = localStorage.getItem('token');
+    var finallist : finalorder[] = [];
+    for(var i=0; i<this.orders.length;i++){
+      var item:finalorder = {
+        Fid:this.orders[i].Fid,
+        quantity:this.orders[i].qty
+      }
+      finallist.push(item);
+    }
+    const body:finalorderlist = {"auth_token":token, "order":finallist}
+    //POST request
   }
 }

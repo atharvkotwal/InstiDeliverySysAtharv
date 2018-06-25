@@ -7,7 +7,6 @@ import { EaterydetService } from '../eaterydet.service';
 import { OrderService } from '../order.service';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { FilterPipe } from "../filter.pipe";
 
 @Component({
   selector: 'app-eaterydetails',

@@ -7,3 +7,11 @@ export class Orderlist{
     price:number;
     totprice:number;
 }
+export class finalorder{
+    Fid:number;
+    quantity:number;
+}
+export class finalorderlist{
+    auth_token:string;
+    order:finalorder[];
+}

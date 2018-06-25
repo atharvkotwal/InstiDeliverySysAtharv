@@ -26,5 +26,8 @@ export class OrdersComponent implements OnInit {
     this.orderservice.clear();
     this.location.back();
   }
+  finalorder(){
+    this.orderservice.finalorder();
+  }
 
 }
