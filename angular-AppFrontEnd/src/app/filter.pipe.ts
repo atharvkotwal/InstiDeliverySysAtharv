@@ -8,7 +8,6 @@ import { Eatery } from './eatery';
 export class FilterPipe implements PipeTransform {
   term: string;
   transform(etrys: Eatery[], term: string): any {
-    // var fdetails:FoodType[] = [];
     const list: any[] = [];
     this.term = term;
     for (var k = 0; k < etrys.length; k++) {
@@ -27,7 +26,6 @@ export class FilterPipe implements PipeTransform {
     return list;
   }
   namefilter(arg: FoodDetails, ftyp: FoodType,ename:string) {
-    //return { Fid: 2413, foodname: 'Fish', price: 40,type:2 };
     var ar: any;
     if (arg.foodname.toLowerCase().includes(this.term.toLowerCase())) {
       ar = arg;
