@@ -1,16 +1,35 @@
-<div *ngIf="orderservice.orders.length" >
-        <h2>Your Order </h2>
+<div *ngIf="orderservice.orders.length; else noorder">
+    <h2>Your Order </h2>
     <table>
-        
-            <tr><th> Eatery's Name </th><th> Food Name </th><th> Quantity</th><th> Price (Rs) </th> <th> Total Price(Rs) </th> </tr>
-            <tr *ngFor="let fd of orderservice.orders">
-                <th> {{fd.name}} </th><th> {{fd.foodname}} </th><th> {{fd.qty}}</th>
-                <th> {{fd.price}} </th> <th>{{fd.totprice}} </th>
-            </tr>
-            <tr> <th colspan="4"> Total Amount to Pay </th> <th> <strong>{{total}}</strong>  </th> </tr>
-    </table>
-    <button (click)="finalorder()" >ORDER and PAY Rs {{total}}</button>
-</div>
 
+        <tr>
+            <th> Eatery's Name </th>
+            <th> Food Name </th>
+            <th> Quantity</th>
+            <th> Price (Rs) </th>
+            <th> Total Price(Rs) </th>
+        </tr>
+        <tr *ngFor="let fd of orderservice.orders">
+            <th> {{fd.name}} </th>
+            <th> {{fd.foodname}} </th>
+            <th> {{fd.qty}}</th>
+            <th> {{fd.price}} </th>
+            <th>{{fd.totprice}} </th>
+        </tr>
+        <tr>
+            <th colspan="4"> Total Amount to Pay </th>
+            <th>
+                <strong>{{total}}</strong>
+            </th>
+        </tr>
+    </table>
+    <button (click)="finalorder()">ORDER and PAY Rs {{total}}</button>
+    <button (click)="clear()">Clear Cart</button>
+    <button routerLink="/eateries"> Add Order from another Eatery </button>
+</div>
+<ng-template #noorder>
+    <h3>Your Cart is Empty!!!</h3><br>
+    <button routerLink="/eateries"> Add Order to your Cart </button>
+</ng-template>
 <button (click)="goBack()">go back</button>
-<button routerLink="/eateries"> Add Order from another Eatery </button>
+<h1>{{dta.status}} </h1>

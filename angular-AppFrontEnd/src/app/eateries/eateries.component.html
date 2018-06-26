@@ -1,8 +1,27 @@
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">Description of Food Item</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <p *ngIf="description; else nodescription">{{description}}</p>
+        <img src="{{image}}" alt="Image not Available" style="width:inherit ;height: auto;">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+    </div>
+</ng-template>
+<ng-template #nodescription>
+    <p>No Description Available</p>
+</ng-template>
 <h3>Eateries Available</h3>
+<button style="float:right" routerLink="/yourorder" > Cart </button>
 <form>
   <label>Search: </label>
   <br>
-  <input type="text" [(ngModel)]="term" [ngModelOptions]="{standalone: true}" placeholder="Search in {{eatery.name}}" />
+  <input type="text" [(ngModel)]="term" [ngModelOptions]="{standalone: true}" placeholder="Search" />
 </form>
 <div *ngIf="term">
   <h3> Search Results :</h3>
@@ -13,26 +32,29 @@
       <th> Food Name </th>
       <th> Price (Rs)</th>
       <th> Quantity </th>
+      <th> Add to your Cart </th>
     </tr>
     <tr *ngFor="let fd of eateries | filter:term " [ngStyle]="{'color':getcolor(fd.food_type)}">
         <ng-container *ngIf="!fd.Msg; else srch">
             <td> {{fd.etry}} </td>
             <td> {{fd.typ}} </td>
-            <td (click)="openWindowCustomClass(content,fd.description,fd.img)">
+            <td (click)="openWindowCustomClass(content,fd.description,fd.img)" style="cursor: pointer;">
                 <u> {{fd.foodname}}</u>
             </td>
             <td> {{fd.price}}</td>
             <td>
                 <button (click)="minus(fd)">-</button>
-                <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
+                <input type="number" [(ngModel)]="fd.qty" placeholder="qty" class="qtyinput"  />
                 <button (click)="add(fd)">+</button>
             </td>
+            <td> <button (click)="addorder(fd)">Add</button> </td>
         </ng-container>
         <ng-template #srch>
             <h4>{{fd.Msg}}</h4>
         </ng-template>
     </tr>
   </table>
+  
 </div>
 <div class="grid grid-pad">
   <a *ngFor="let eatery of eateries" class="col-1-4" routerLink="/detail/{{eatery.Eid}}">

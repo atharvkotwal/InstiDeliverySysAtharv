@@ -10,7 +10,8 @@ import { Orderlist } from '../orderlist';
 })
 export class OrdersComponent implements OnInit {
   total:number=0;
-  constructor(private orderservice:OrderService,
+  dta:any;
+  constructor(public orderservice:OrderService,
               private location: Location
             ) { }
 
@@ -23,11 +24,13 @@ export class OrdersComponent implements OnInit {
     }
   }
   goBack(): void {
-    this.orderservice.clear();
     this.location.back();
   }
+  clear():void{
+    this.orderservice.clear();
+  }
   finalorder(){
-    this.orderservice.finalorder();
+    this.orderservice.finalorder().subscribe(data=>this.dta=data);
   }
 
 }

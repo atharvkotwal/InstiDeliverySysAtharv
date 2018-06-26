@@ -19,8 +19,9 @@
 
 <div *ngIf="eatery">
     <h1>{{eatery.name}}'s Menu</h1>
+    <button style="float:right" routerLink="/yourorder" > Cart </button>
     <form>
-        <label>Search: </label>
+        <label>Search:</label>
         <br>
         <input type="text" [(ngModel)]="term" [ngModelOptions]="{standalone: true}" placeholder="Search in {{eatery.name}}" />
     </form>
@@ -42,7 +43,7 @@
                     <td> {{fd.price}}</td>
                     <td>
                         <button (click)="minus(fd)">-</button>
-                        <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
+                        <input type="number" [(ngModel)]="fd.qty" placeholder="qty" class="qtyinput" />
                         <button (click)="add(fd)">+</button>
                     </td>
                 </ng-container>
@@ -52,7 +53,7 @@
             </tr>
         </table>
     </div>
-    <ngb-tabset justify='fill'>
+    <ngb-tabset justify='justified'>
         <ngb-tab *ngFor="let ft of eatery.Menu">
             <ng-template ngbTabTitle>{{ft.Ftype}}</ng-template>
             <ng-template ngbTabContent>
@@ -69,7 +70,7 @@
                         <td> {{fd.price}}</td>
                         <td>
                             <button (click)="minus(fd)">-</button>
-                            <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
+                            <input type="number" [(ngModel)]="fd.qty" placeholder="qty" class="qtyinput"  />
                             <button (click)="add(fd)">+</button>
                         </td>
                     </tr>
@@ -77,6 +78,6 @@
             </ng-template>
         </ngb-tab>
     </ngb-tabset>
-    <button (click)="placeorder()">Place Order</button>
+    <button (click)="placeorder()">Add To Cart</button>
     <button (click)="goBack()">go back</button>
 </div>

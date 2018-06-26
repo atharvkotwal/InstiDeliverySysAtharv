@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Eatery } from '../eatery';
-import { FoodDetails, FoodType } from '../fooddetails';
+// import { FoodDetails, FoodType } from '../fooddetails';
 import { EaterydetService } from '../eaterydet.service';
 import { OrderService } from '../order.service';
 import { Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-eaterydetails',
@@ -22,7 +22,7 @@ export class EaterydetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private eaterydetservice: EaterydetService,
-    private orderservice: OrderService,
+    public orderservice: OrderService,
     private router: Router,
     private modalService: NgbModal
   ) { }
@@ -42,7 +42,7 @@ export class EaterydetailsComponent implements OnInit {
   }
   placeorder(): void {
     this.orderservice.order(this.eatery);
-    this.router.navigate(['/yourorder']);
+    // this.router.navigate(['/yourorder']);
   }
   goBack(): void {
     this.location.back();
@@ -62,7 +62,7 @@ export class EaterydetailsComponent implements OnInit {
   getcolor(ftp){
     switch(ftp){
       case '2':return 'red';
-      case '3':return 'yellow';
+      case '3':return '#ff9100d3';
       default :return 'green';
     }
   }
