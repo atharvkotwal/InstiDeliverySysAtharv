@@ -28,4 +28,11 @@ export class EateriesComponent implements OnInit {
     this.eaterydetservice.geteateries()
         .subscribe(etrys => {this.eateries = etrys.eateries;} );
   }
+  getcolor(ftp){
+    switch(ftp){
+      case '2':return 'red';
+      case '3':return 'yellow';
+      default :return 'green';
+    }
+  }
 } 

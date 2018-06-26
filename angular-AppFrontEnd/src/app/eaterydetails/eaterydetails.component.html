@@ -1,4 +1,3 @@
-<!-- <ng-template #popContent > Hey {{description}}</ng-template> -->
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
         <h4 class="modal-title">Description of Food Item</h4>
@@ -21,94 +20,54 @@
 <div *ngIf="eatery">
     <h1>{{eatery.name}}'s Menu</h1>
     <form>
-        <label>Search:  </label><br>
+        <label>Search: </label>
+        <br>
         <input type="text" [(ngModel)]="term" [ngModelOptions]="{standalone: true}" placeholder="Search in {{eatery.name}}" />
     </form>
-    <div #search *ngIf="term">
+    <div *ngIf="term">
         <h3> Search Results :</h3>
         <table style="width:100%;">
-                <tr>
-                    <th> Food Category </th>
-                    <th> Food Name </th>
-                    <th> Price (Rs)</th>
-                    <th> Quantity </th>
-                </tr>
-                <tr *ngFor="let fd of fdetails | filter:term " [ngSwitch]="fd.food_type">
-                    <ng-container *ngIf= "!fd.Msg; else srch">
-                    <td *ngSwitchCase="2" style="color: red"> {{fd.typ}} </td>
-                    <td *ngSwitchCase="3" style="color:rgba(255, 255, 0, 0.836)"> {{fd.typ}} </td>
-                    <td *ngSwitchDefault style="color: green"> {{fd.typ}} </td>
-                    <td *ngSwitchCase="2" style="color: red; cursor: pointer" (click)="openWindowCustomClass(content,fd.description,fd.img)">
+            <tr>
+                <th> Food Category </th>
+                <th> Food Name </th>
+                <th> Price (Rs)</th>
+                <th> Quantity </th>
+            </tr>
+            <tr *ngFor="let fd of  [eatery] | filter:term " [ngStyle]="{'color':getcolor(fd.food_type)}">
+                <ng-container *ngIf="!fd.Msg; else srch">
+                    <td> {{fd.typ}} </td>
+                    <td (click)="openWindowCustomClass(content,fd.description,fd.img)">
                         <u> {{fd.foodname}}</u>
                     </td>
-                    <td *ngSwitchCase="3" style="color:yellow; cursor: pointer;" (click)="openWindowCustomClass(content,fd.description,fd.img)">
-                        <u> {{fd.foodname}}</u>
-                    </td>
-                    <td *ngSwitchDefault style="color: green; cursor: pointer;" (click)="openWindowCustomClass(content,fd.description,fd.img)">
-                        <u> {{fd.foodname}}</u>
-                    </td>
-                    <td *ngSwitchCase="2" style="color: red"> {{fd.price}}</td>
-                    <td *ngSwitchCase="3" style="color:rgba(255, 255, 0, 0.836)"> {{fd.price}}</td>
-                    <td *ngSwitchDefault style="color: green"> {{fd.price}}</td>
-                    <td *ngSwitchCase="2" style="color: red">
+                    <td> {{fd.price}}</td>
+                    <td>
                         <button (click)="minus(fd)">-</button>
                         <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
                         <button (click)="add(fd)">+</button>
                     </td>
-                    <td *ngSwitchCase="3" style="color:rgba(255, 255, 0, 0.836)">
-                        <button (click)="minus(fd)">-</button>
-                        <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
-                        <button (click)="add(fd)">+</button>
-                    </td>
-                    <td *ngSwitchDefault style="color: green">
-                        <button (click)="minus(fd)">-</button>
-                        <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
-                        <button (click)="add(fd)">+</button>
-                    </td></ng-container>
-                    <ng-template #srch>
-                        <h4>{{fd.Msg}}</h4>
-                    </ng-template>
-                </tr>
-            </table>
+                </ng-container>
+                <ng-template #srch>
+                    <h4>{{fd.Msg}}</h4>
+                </ng-template>
+            </tr>
+        </table>
     </div>
     <ngb-tabset justify='fill'>
-        <ngb-tab *ngFor="let ft of fdetails">
+        <ngb-tab *ngFor="let ft of eatery.Menu">
             <ng-template ngbTabTitle>{{ft.Ftype}}</ng-template>
             <ng-template ngbTabContent>
                 <table style="width:100%; ">
                     <tr>
-                        <th> id </th>
                         <th> Food Name </th>
                         <th> Price (Rs)</th>
                         <th> Quantity </th>
                     </tr>
-                    <tr *ngFor="let fd of ft.Ftypedet" [ngSwitch]="fd.food_type">
-                        <td *ngSwitchCase="2" style="color: red"> {{fd.id}} </td>
-                        <td *ngSwitchCase="3" style="color:rgba(255, 255, 0, 0.836)"> {{fd.id}} </td>
-                        <td *ngSwitchDefault style="color: green"> {{fd.id}} </td>
-                        <td *ngSwitchCase="2" style="color: red; cursor: pointer" (click)="openWindowCustomClass(content,fd.description,fd.img)">
+                    <tr *ngFor="let fd of ft.Ftypedet" [ngStyle]="{'color':getcolor(fd.food_type)}">
+                        <td (click)="openWindowCustomClass(content,fd.description,fd.img)" style="cursor: pointer;">
                             <u> {{fd.foodname}}</u>
                         </td>
-                        <td *ngSwitchCase="3" style="color:yellow; cursor: pointer;" (click)="openWindowCustomClass(content,fd.description,fd.img)">
-                            <u> {{fd.foodname}}</u>
-                        </td>
-                        <td *ngSwitchDefault style="color: green; cursor: pointer;" (click)="openWindowCustomClass(content,fd.description,fd.img)">
-                            <u> {{fd.foodname}}</u>
-                        </td>
-                        <td *ngSwitchCase="2" style="color: red"> {{fd.price}}</td>
-                        <td *ngSwitchCase="3" style="color:rgba(255, 255, 0, 0.836)"> {{fd.price}}</td>
-                        <td *ngSwitchDefault style="color: green"> {{fd.price}}</td>
-                        <td *ngSwitchCase="2" style="color: red">
-                            <button (click)="minus(fd)">-</button>
-                            <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
-                            <button (click)="add(fd)">+</button>
-                        </td>
-                        <td *ngSwitchCase="3" style="color:rgba(255, 255, 0, 0.836)">
-                            <button (click)="minus(fd)">-</button>
-                            <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
-                            <button (click)="add(fd)">+</button>
-                        </td>
-                        <td *ngSwitchDefault style="color: green">
+                        <td> {{fd.price}}</td>
+                        <td>
                             <button (click)="minus(fd)">-</button>
                             <input type="number" [(ngModel)]="fd.qty" placeholder="qty" />
                             <button (click)="add(fd)">+</button>

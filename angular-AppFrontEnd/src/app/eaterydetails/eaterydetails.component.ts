@@ -15,7 +15,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EaterydetailsComponent implements OnInit {
   @Input() eatery: Eatery;
-  fdetails: FoodType[];
+  // fdetails: FoodType[];
   description: string;
   image: string;
   constructor(
@@ -33,7 +33,7 @@ export class EaterydetailsComponent implements OnInit {
   getetrydet(): void {
     const id = +this.route.snapshot.paramMap.get('Eid');
     this.eaterydetservice.geteaterydet(id).subscribe(etry => this.eatery = etry);
-    this.fdetails = this.eatery.Menu;
+    // this.fdetails = this.eatery.Menu;
   }
   openWindowCustomClass(content, desc: string, img: string) {
     this.description = desc;
@@ -57,6 +57,13 @@ export class EaterydetailsComponent implements OnInit {
   minus(fd) {
     if (fd.qty) {
       fd.qty -= 1;
+    }
+  }
+  getcolor(ftp){
+    switch(ftp){
+      case '2':return 'red';
+      case '3':return 'yellow';
+      default :return 'green';
     }
   }
 }
